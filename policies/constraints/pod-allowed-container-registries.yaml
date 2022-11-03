@@ -1,0 +1,20 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: pod-allowed-container-registries
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+    - apiGroups:
+      - ""
+      kinds:
+      - Pod
+  parameters:
+    repos:
+    - auto
+    - gcr.io/config-management-release
+    - gcr.io/gke-release
+    - gke.gcr.io
+    - k8s.gcr.io
+    - us-east1-docker.pkg.dev/acm-workshop--tenant/containers
